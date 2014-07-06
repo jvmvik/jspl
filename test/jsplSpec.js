@@ -33,6 +33,13 @@ describe('JSPL regression', function()
       expect(s).toBe('<html><h1>Header</h1></html>');
     });   
     
+    
+    it('variables && include && loop', function()
+    {
+      var s = jspl.include('<html><%@ include file="loop2" %></html>',{head: "Header",people:['Mike', 'Bob', 'Henry']});
+      expect(s).toBe('<html><h2>Header</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol></html>');
+    });   
+    
   });
   
   describe('Compile', function()
@@ -49,7 +56,6 @@ describe('JSPL regression', function()
       expect(s).toBe('<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol>');
     });
     
-
     it('for loop without data', function()
     {
       try
@@ -60,5 +66,28 @@ describe('JSPL regression', function()
       catch(e)
       {expect(e.message).toBe('people is not defined');}
     });
+    
+    it('mixed loop and variable', function()
+    {
+        var s = jspl.compile('test/data/variableLoop.html', {header:'Test', prime:[1,2,3]});
+        expect(s).toBe('<h1>Test</h1>\n<ol>\n<li>1</li>\n<li>2</li>\n<li>3</li>\n</ol>');
+     
+    });
+  });
+  
+  // Render
+  describe('Render', function()
+  {
+    it('Variables && include && loop', function()
+    {
+      var s = jspl.render('test/data/render.html',{title: "Header 1", head: 'Header 2', people:['Mike', 'Bob', 'Henry']});
+      expect(s).toBe('');
+    }); 
+    
+    it('render a loop', function()
+    {
+      var s = jspl.render('test/data/loop2.html',{title: "Header 1", head: 'Header 2', people:['Mike', 'Bob', 'Henry']});
+      expect(s).toBe('<h2>Header 2</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol>');
+    });    
   });
 });
