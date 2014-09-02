@@ -37,7 +37,7 @@ describe('JSPL regression', function()
     it('variables && include && loop', function()
     {
       var s = jspl.include('<html><%@ include file="loop2" %></html>',{head: "Header",people:['Mike', 'Bob', 'Henry']});
-      expect(s).toBe('<html><h2>Header</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol></html>');
+      expect(s).toBe('<html><h2>Header</h2>\n<ol>\n\n<li>Mike</li>\n\n<li>Bob</li>\n\n<li>Henry</li>\n\n</ol></html>');
     });   
     
   });
@@ -76,18 +76,19 @@ describe('JSPL regression', function()
   });
   
   // Render
-  describe('Render', function()
+  describe('Render', function(done)
   {
-    it('Variables && include && loop', function()
+    it('Variables && include && loop', function(done)
     {
-      var s = jspl.render('test/data/render.html',{title: "Header 1", head: 'Header 2', people:['Mike', 'Bob', 'Henry']});
-      expect(s).toBe('');
+      var json = {title: "Header 1", head: 'Header 2', people:['Mike']};
+      var s = jspl.render('test/data/render.html', json);
+      expect(s).toBe('<html>\n<h1>Header 1</h1>\n<h2>Header 2</h2>\n<ol>\n\n<li>Mike</li>\n\n</ol>\n</html>');
     }); 
     
-    it('render a loop', function()
+    it('Render a simple loop', function()
     {
       var s = jspl.render('test/data/loop2.html',{title: "Header 1", head: 'Header 2', people:['Mike', 'Bob', 'Henry']});
-      expect(s).toBe('<h2>Header 2</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol>');
+      expect(s).toBe('<h2>Header 2</h2>\n<ol>\n\n<li>Mike</li>\n\n<li>Bob</li>\n\n<li>Henry</li>\n\n</ol>');
     });    
   });
 });
