@@ -11,14 +11,14 @@ Features
  * Loop
  
 see: Gists section
-  
+
 Getting started
 ===
 1. Install JSPL
 $npm install jspl -save
 
 2. Enable JSPL in Express 4 
-Edit app.js, let's JSPL bind to the express app.
+```Edit app.js, let's JSPL bind to the express app.
 
 var app = express();
 
@@ -29,11 +29,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view cache', false);
 
 // Bind JSPL to express
-jspl.bind(app);
+jspl.bind(app);```
 
 
+Sample
+====
 
-Sample: sample/express/
+An example of application is available under: sample/express/
+it demonstrate the integration of this simple template engine with express.
 
 Gists
 ---
@@ -41,46 +44,54 @@ Add variable
 ---
 File: views/index.html 
 
+```
 <h1>Hello <%= name %></h1>
+```
 
 File: app.js
 
+```
 app.get('/', function(req, res)
 {
   res.render('index', {name: 'John'});
 })
+```
 
 Result:
 
-<h1>Hello John</h1>
+```<h1>Hello John</h1>```
 
 For loop
 ---
 
 File: views/index.html 
 
+```
 <h1>Hello</h1>
 <ol>
   <% _.each(people, function(name) { %>
    <li><%= name %></li>
   <% }); %>
 </ol>
+```
 
 File: app.js
-
+```
 app.get('/', function(req, res)
 {
   res.render('index', {people: ['moe', 'curly', 'larry']});
 })
-
+```
 Result:
 
+```
 <h1>Hello</h1>
 <ol>
   <li>moe</li>
   <li>curly</li>
   <li>larry</li>
 </ol>
+```
 
 Include fragment
 ---
@@ -92,6 +103,10 @@ Include a HTML page into the current one.
  - include : Tag name
  - file    : Tag parameter
 
+Testing
+---
+This template engine build is animate by a complete regression test suite.
+
 Notes
 ---
 The simple template language is very close to JSP.
@@ -100,6 +115,12 @@ It's based on underscore.
 This project does not provide any advanced JSP tag.
 underscore. Compliant with Express. Add the tag include for HTML fragment.
 
+Motivation
+---
+
+I do not like Jade or whatever short HTML template engine. I understand why it's a good solution for basic website.
+But it does not mix well with complex HTML + Javascript Framework like AngularJS. Also, I think software developer should generally minimize the number of transformation that must be done to produce an output.
+  
 Roadmap
 ---
  * Improve syntax error message
