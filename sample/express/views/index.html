@@ -1,7 +1,33 @@
 <html>
-<title>Hello World!</title>
+<title>JSPL / Express integration example...</title>
 <body>
-<h1><%= title %></h1>
+
+<h1>JSPL / Express integration example...</h1>
+
+Here is few example created with JSP Like.
+
+<h3>Include a variable</h3>
+<h4>Code:</h4>
+
+<code>
+<h2>< %\= title %><h2>
+</code>
+
+<h4>Output:</h4>
+<h2><%= title %></h2>
+<hr/>
+<h3>File include</h3>
+<h4>Code:</h4>
+<code>
+< %@ include file="people" %>
+</code>
+
+<h4>Output:</h4>
+<code>
 <%@ include file="people" %>
+</code>
+<hr/>
+<p>Now you should look at the content of views/people.html and router/index.js..</p>
+
 </body>
 </html>
