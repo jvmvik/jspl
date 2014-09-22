@@ -22,13 +22,20 @@ $npm install jspl -save
 
 var app = express();
 
+// Disable jade by removing or commenting
+//app.set('view engine', 'jade');
+
 // view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 
 // Enable 
+
 app.set('view cache', false);
 
 // Bind JSPL to express
+
+var jspl = require('jspl');
 jspl.bind(app);```
 
 
@@ -70,7 +77,9 @@ File: views/index.html
 <h1>Hello</h1>
 <ol>
   <% _.each(people, function(name) { %>
+   
    <li><%= name %></li>
+   
   <% }); %>
 </ol>
 ```
@@ -91,6 +100,7 @@ Result:
   <li>curly</li>
   <li>larry</li>
 </ol>
+
 ```
 
 Include fragment
