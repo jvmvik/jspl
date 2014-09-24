@@ -1,11 +1,11 @@
 {
   "name": "jspl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JSP-Like (JSPL) is a simple template based on underscore. Compliant with Express. Add the tag include for HTML fragment.",
-  "main": "lib/jspl.js",
+  "main": "lib/jspl",
   "scripts": {
-   "mocha": "mocha -u bdd -R spec",
-   "test": "mocha -R spec && npm run coverage"
+   "test": "mocha -u bdd -R test",
+   "coverage": "mocha -R test && npm run coverage"
   },
   "keywords": [
     "express",
