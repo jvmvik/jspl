@@ -1,4 +1,4 @@
-jspl
+JSPL      [![Build Status](https://travis-ci.org/jvmvik/jspl.svg?branch=master)](https://travis-ci.org/jvmvik/jspl)
 ====
 
 JSP Like Template Engine for ExpressJS and NodeJS (based on underscore, support include, cache...)
