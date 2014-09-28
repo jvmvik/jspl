@@ -5,12 +5,14 @@ JSP Like Template Engine for ExpressJS and NodeJS (based on underscore, support 
 
 Features
 ---
- * Cache
+ * JSP Like language to build template.
+ * Cache (production)
  * Include HTML fragment
- * Variables
- * Loop
+ * Variables: array, string
+ * For loop
+ * Dynamic evaluate expression 
  
-see: Gists section
+see: Example section
 
 Getting started
 ===
@@ -23,17 +25,18 @@ $npm install jspl -save
 var app = express();
 
 // Disable jade by removing or commenting
+
 //app.set('view engine', 'jade');
 
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
 
-// Enable 
+// Disable cache for debug. or set to true: to enable cache in production.
 
 app.set('view cache', false);
 
-// Bind JSPL to express
+// Bind JSPL to express. 
 
 var jspl = require('jspl');
 jspl.bind(app);```
@@ -43,9 +46,9 @@ Sample
 ====
 
 An example of application is available under: sample/express/
-it demonstrate the integration of this simple template engine with express.
+it shows the template engine in action with express.
 
-Gists
+Example of code: (GIST)
 ---
 Add variable
 ---
