@@ -50,6 +50,24 @@ it shows the template engine in action with express.
 
 Example of code: (GIST)
 ---
+
+Condition: IF
+---
+File: views/index.html
+```
+<% if(user){ %> 
+  <%= user.profile.firstName %></p>
+    <% } %>
+```
+
+File: app.js
+```
+router.get('/', function(req, res) 
+{
+  res.render('index', {user: {profile: {firstName: 'Mike'} } });
+});
+```
+
 Add variable
 ---
 File: views/index.html 
