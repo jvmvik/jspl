@@ -20,13 +20,15 @@ Getting started
 $npm install jspl -save
 
 2. Enable JSPL in Express 4 
-```Edit app.js, let's JSPL bind to the express app.
+
+```javascript
+// Edit app.js, let's JSPL bind to the express app.
 
 var app = express();
 
 // Disable jade by removing or commenting
 
-//app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
 
 // view engine setup
 
@@ -39,7 +41,8 @@ app.set('view cache', false);
 // Bind JSPL to express. 
 
 var jspl = require('jspl');
-jspl.bind(app);```
+jspl.bind(app);
+```
 
 
 Sample
