@@ -1,33 +1,37 @@
+<%@ template file="layout" %>
 <html>
 <title>JSPL / Express integration example...</title>
 <body>
 
-<h1>JSPL / Express integration example...</h1>
+<h3>JSPL / Express integration example...</h3>
 
 Here is few example created with JSP Like.
 
 <h3>Include a variable</h3>
 <h4>Code:</h4>
-
-<code>
-<h2>< %\= title %><h2>
-</code>
+<pre>
+  &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+</pre>
 
 <h4>Output:</h4>
-<h2><%= title %></h2>
+<pre><%= title %></pre>
 <hr/>
+
 <h3>File include</h3>
 <h4>Code:</h4>
-<code>
-< %@ include file="people" %>
-</code>
+<pre>
+  &lt; %@ include file=&quot;people&quot; %&gt;
+</pre>
 
 <h4>Output:</h4>
-<code>
+<pre>
 <%@ include file="people" %>
-</code>
+</pre>
 <hr/>
+
 <p>Now you should look at the content of views/people.html and router/index.js..</p>
 
 </body>
 </html>
+
+<!-- code encoded with http://www.web2generators.com/html/entities -->

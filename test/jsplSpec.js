@@ -19,6 +19,24 @@ describe('JSPL regression / ', function()
     jspl.bind(express());
   });
   
+  describe('Template / ', function()
+  {
+    it('draft', function()
+    {
+      var str = '<%@ template file="layout" %>';
+      var regexp = /<%@\s+template\s+file=['"](.*?)['"]\s+%>/;
+      var matches_array = regexp.exec(str);
+      console.log(matches_array[1]);
+    });
+    
+    it('simple template', function()
+    {
+      // Template is layout.html
+      var s = jspl.template('<%@ template file="layout" %><html><body><p>page content</p></body></html>', {});
+      expect(s.replace(/\s*\n\s*/g,'')).toBe('<html><head><title>Layout</title></head><body><h1>Header</h1><p>page content</p></body></html>');
+    });
+  });
+  
   describe('Include / ', function()
   {  
     it('basic include file', function()

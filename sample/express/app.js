@@ -4,7 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var jspl = require('jspl');
+var jspl = require('../../lib/jspl');
 
 var routes = require('./routes/index');
 
@@ -38,6 +38,7 @@ app.use(function(req, res, next)
 app.use(function(err, req, res, next) 
 {
     console.error('Intercept an error: ' + err);
+    console.error(err);
     res.json(500, err.message);
 });
 

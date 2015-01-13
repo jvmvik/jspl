@@ -1,6 +1,6 @@
 {
   "name": "jspl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JSP-Like (JSPL) is a simple template based on underscore. Compliant with Express. Add the tag include for HTML fragment.",
   "main": "lib/jspl",
   "scripts": {
@@ -26,5 +26,9 @@
   "devDependencies": {
     "mocha": "*",
     "expect": "*"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/jvmvik/jspl.git"
   }
 }

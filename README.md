@@ -6,6 +6,7 @@ JSP Like Template Engine for ExpressJS and NodeJS (based on underscore, support 
 Features
 ---
  * JSP Like language to build template.
+ * Layout
  * Cache (production)
  * Include HTML fragment
  * Variables: array, string
@@ -42,6 +43,9 @@ app.set('view cache', false);
 
 var jspl = require('jspl');
 jspl.bind(app);
+
+// Default extension is .html
+jspl.setExtension('.jspl');
 ```
 
 
@@ -71,7 +75,7 @@ router.get('/', function(req, res)
 });
 ```
 
-Add variable
+Show variable content
 ---
 File: views/index.html 
 
@@ -81,7 +85,7 @@ File: views/index.html
 
 File: app.js
 
-```
+```javascript
 app.get('/', function(req, res)
 {
   res.render('index', {name: 'John'});
@@ -90,14 +94,16 @@ app.get('/', function(req, res)
 
 Result:
 
-```<h1>Hello John</h1>```
+```html
+<h1>Hello John</h1>
+```
 
 For loop
 ---
 
 File: views/index.html 
 
-```
+```html
 <h1>Hello</h1>
 <ol>
   <% _.each(people, function(name) { %>
@@ -109,7 +115,7 @@ File: views/index.html
 ```
 
 File: app.js
-```
+```html
 app.get('/', function(req, res)
 {
   res.render('index', {people: ['moe', 'curly', 'larry']});
@@ -117,7 +123,7 @@ app.get('/', function(req, res)
 ```
 Result:
 
-```
+```html
 <h1>Hello</h1>
 <ol>
   <li>moe</li>
@@ -127,13 +133,35 @@ Result:
 
 ```
 
+Template 
+---
+
+<%@ template file="templateName" %>
+
+ - templateName : Location of the included view without extension. The extension .html will be added automatically.
+ - <%@ %>   : Indicate a tag
+ - template : Tag name
+ - file     : Tag parameter
+ 
+For example:
+view.html 
+
+<%@ template file="layout" %>
+
+layout.html must include the place where the view is inserted.
+
+<jspl:doLayout>
+
+@see: sample/express 
+ 
 Include fragment
 ---
-Include a HTML page into the current one.
+```
 <%@ include file="viewName" %>
+```
 
  - viewName : Location of the included view without extension. The extension .html will be added automatically.
- - <%@ %> : Indicate a tag
+ - <%@ %>  : Indicate a tag
  - include : Tag name
  - file    : Tag parameter
 
