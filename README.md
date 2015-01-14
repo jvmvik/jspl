@@ -18,36 +18,32 @@ see: Example section
 Getting started
 ===
 1. Install JSPL
+```sh
 $npm install jspl -save
+```
 
 2. Enable JSPL in Express 4 
 
 ```javascript
 // Edit app.js, let's JSPL bind to the express app.
-
 var app = express();
 
 // Disable jade by removing or commenting
-
 // app.set('view engine', 'jade');
 
 // view engine setup
-
 app.set('views', path.join(__dirname, 'views'));
 
 // Disable cache for debug. or set to true: to enable cache in production.
-
 app.set('view cache', false);
 
 // Bind JSPL to express. 
-
 var jspl = require('jspl');
 jspl.bind(app);
 
 // Default extension is .html
 jspl.setExtension('.jspl');
 ```
-
 
 Sample
 ====
@@ -130,13 +126,14 @@ Result:
   <li>curly</li>
   <li>larry</li>
 </ol>
-
 ```
 
 Template 
 ---
 
+```html
 <%@ template file="templateName" %>
+```
 
  - templateName : Location of the included view without extension. The extension .html will be added automatically.
  - <%@ %>   : Indicate a tag
@@ -146,12 +143,15 @@ Template
 For example:
 view.html 
 
+```html
 <%@ template file="layout" %>
+```
 
 layout.html must include the place where the view is inserted.
 
+```html
 <jspl:doLayout>
-
+```
 @see: sample/express 
  
 Include fragment
