@@ -1,11 +1,9 @@
-<%@ template file="layout" %>
+<jspl:template file="layout" />
 <html>
 <title>JSPL / Express integration example...</title>
 <body>
 
-<h3>JSPL / Express integration example...</h3>
-
-Here is few example created with JSP Like.
+<jspl:include file="header"/>
 
 <h3>Include a variable</h3>
 <h4>Code:</h4>
@@ -20,12 +18,12 @@ Here is few example created with JSP Like.
 <h3>File include</h3>
 <h4>Code:</h4>
 <pre>
-  &lt; %@ include file=&quot;people&quot; %&gt;
+  &lt;jspl:include file=&quot;people&quot; &gt;
 </pre>
 
 <h4>Output:</h4>
 <pre>
-<%@ include file="people" %>
+<jspl:include file="people" />
 </pre>
 <hr/>
 
