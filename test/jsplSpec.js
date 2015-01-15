@@ -23,8 +23,8 @@ describe('JSPL regression / ', function()
   {
     it('draft', function()
     {
-      var str = '<%@ template file="layout" %>';
-      var regexp = /<%@\s+template\s+file=['"](.*?)['"]\s+%>/;
+      var str = '<jspl : template file="layout" / >';
+      var regexp = /<jspl\s*:\s*template\s*file=['"](.*?)['"]\s*\/\s*>/;
       var matches_array = regexp.exec(str);
       console.log(matches_array[1]);
     });
@@ -32,7 +32,7 @@ describe('JSPL regression / ', function()
     it('simple template', function()
     {
       // Template is layout.html
-      var s = jspl.template('<%@ template file="layout" %><html><body><p>page content</p></body></html>', {});
+      var s = jspl.template('<jspl:template file="layout" /><html><body><p>page content</p></body></html>', {});
       expect(s.replace(/\s*\n\s*/g,'')).toBe('<html><head><title>Layout</title></head><body><h1>Header</h1><p>page content</p></body></html>');
     });
   });
@@ -41,20 +41,20 @@ describe('JSPL regression / ', function()
   {  
     it('basic include file', function()
     {
-      var s = jspl.include('<html><%@ include file="chunk" %></html>');
+      var s = jspl.include('<html><jspl:include file="chunk" /></html>');
       expect(s).toBe('<html><h2>I\'m a chunk !!</h2></html>', {});
     });    
     
     it('variables && include', function()
     {
-      var s = jspl.include('<html><%@ include file="chunk2" %></html>',{title: "Header"});
+      var s = jspl.include('<html><jspl:include file="chunk2" /></html>',{title: "Header"});
       expect(s).toBe('<html><h1>Header</h1></html>');
     });   
     
     
     it('variables && include && loop', function()
     {
-      var s = jspl.include('<html><%@ include file="loop2" %></html>',{head: "Header",people:['Mike', 'Bob', 'Henry']});
+      var s = jspl.include('<html><jspl:include file="loop2" /></html>',{head: "Header",people:['Mike', 'Bob', 'Henry']});
       expect(s).toBe('<html><h2>Header</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol></html>');
     });   
     
@@ -77,7 +77,7 @@ describe('JSPL regression / ', function()
     it('for loop without data', function()
     {
         var s = jspl.compile('test/data/loop.html', {});
-        expect(s).toBe('Parsing error:: people is not defined');
+        expect(s).toMatch(/Parsing error: people is not defined/);
     });
     
     it('mixed loop and variable', function()

@@ -54,13 +54,13 @@ it shows the template engine in action with express.
 Example of code: (GIST)
 ---
 
-Condition: IF
+Condition: if
 ---
 File: views/index.html
 ```
 <% if(user){ %> 
   <%= user.profile.firstName %></p>
-    <% } %>
+<% } %>
 ```
 
 File: app.js
@@ -71,7 +71,7 @@ router.get('/', function(req, res)
 });
 ```
 
-Show variable content
+Display variable content
 ---
 File: views/index.html 
 
@@ -132,11 +132,11 @@ Template
 ---
 
 ```html
-<%@ template file="templateName" %>
+<jspl:template file="templateName" />
 ```
 
  - templateName : Location of the included view without extension. The extension .html will be added automatically.
- - <%@ %>   : Indicate a tag
+ - ```<jspl: />```  : Indicate a tag
  - template : Tag name
  - file     : Tag parameter
  
@@ -144,7 +144,7 @@ For example:
 view.html 
 
 ```html
-<%@ template file="layout" %>
+<jspl:template file="layout" />
 ```
 
 layout.html must include the place where the view is inserted.
@@ -157,11 +157,11 @@ layout.html must include the place where the view is inserted.
 Include fragment
 ---
 ```
-<%@ include file="viewName" %>
+<jspl:include file="viewName" />
 ```
 
  - viewName : Location of the included view without extension. The extension .html will be added automatically.
- - <%@ %>  : Indicate a tag
+ - ```<jspl: />```  : Indicate a tag
  - include : Tag name
  - file    : Tag parameter
 
@@ -181,7 +181,9 @@ Motivation
 ---
 
 I do not like Jade or whatever short HTML template engine. I understand why it's a good solution for basic website.
-But it does not mix well with complex HTML + Javascript Framework like AngularJS. Also, I think software developer should generally minimize the number of transformation that must be done to produce an output.
+But Jade do not mix well with complex HTML + Javascript Framework like AngularJS. Also, I think software developer should generally minimize the number of transformation that must be done to produce an output. 
+And I have a pretty bad experience with EJS.
+For example EJS fails badly if you try to run a simple if condition.
   
 Roadmap
 ---
