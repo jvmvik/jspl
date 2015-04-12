@@ -1,6 +1,6 @@
 {
   "name": "jspl",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "JSP-Like (JSPL) is a simple template engine based on the library: underscore. It's compliant with Express. And the syntax is similar to JSP.",
   "main": "lib/jspl",
   "scripts": {

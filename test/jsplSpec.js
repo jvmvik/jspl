@@ -51,11 +51,16 @@ describe('JSPL regression / ', function()
       expect(s).toBe('<html><h1>Header</h1></html>');
     });   
     
-    
     it('variables && include && loop', function()
     {
       var s = jspl.include('<html><jspl:include file="loop2" /></html>',{head: "Header",people:['Mike', 'Bob', 'Henry']});
       expect(s).toBe('<html><h2>Header</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol></html>');
+    });   
+	
+    it('web component', function()
+    {
+      var s = jspl.include('<html><jspl:include file="web_component" planet="venus" system="solar"/></html>',{});
+      expect(s).toBe('<html><h1>venus</h1>\n<h2>solar</h2>\n</html>');
     });   
     
   });

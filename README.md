@@ -9,9 +9,10 @@ Features
  * Layout
  * Cache (production)
  * Include HTML fragment
+ * Web component capability
  * Variables: array, string
  * For loop
- * Dynamic evaluate expression 
+ * Dynamic expression evaluation
  
 see: Example section
 
@@ -137,8 +138,8 @@ Template
 
  - templateName : Location of the included view without extension. The extension .html will be added automatically.
  - ```<jspl: />```  : Indicate a tag
- - template : Tag name
- - file     : Tag parameter
+ - template : Name of the tag
+ - file     : Template file location 
  
 For example:
 view.html 
@@ -157,13 +158,33 @@ layout.html must include the place where the view is inserted.
 Include fragment
 ---
 ```
-<jspl:include file="viewName" />
+<jspl:include file="chunk" attr1="value1" attr2="value2" />
 ```
 
- - viewName : Location of the included view without extension. The extension .html will be added automatically.
+ - viewName   : Location of the included view without extension. The extension .html will be added automatically.
  - ```<jspl: />```  : Indicate a tag
- - include : Tag name
- - file    : Tag parameter
+ - include    : Tag name
+ - file       : File name (mandatory)
+ - parameters : Optional parameters.
+ 
+The file chunk is located under the view directory.
+
+Example:
+
+views/index.html
+```
+<jspl:include file="web_component" planet="venus" system="solar"/></html>
+```
+
+views/web_component.html
+```
+<h1><%= planet %></h1><h2><%= system %></h2>
+``` 
+
+Output
+```
+<html><h1>venus</h1>\n<h2>solar</h2>\n</html>
+```
 
 Testing
 ---
