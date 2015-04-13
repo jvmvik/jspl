@@ -103,11 +103,10 @@ describe('JSPL regression / ', function()
       expect(s).toBe('<h2>Header 2</h2>\n<ol>\n<li>Mike</li>\n<li>Bob</li>\n<li>Henry</li>\n</ol>');
     });  
     
-    xit('Variables && include', function(done)
+    it('Include takes variable in context', function()
     {
-      var json = {title: "Header 1", name: 'Mike'};
-      var s = jspl.render('test/data/render.html', json);
-      expect(s).toBe('<html>\n<h1>Header 1</h1>\n<h1>Hello Mike</h1>\n</html>');  
+      var s = jspl.render('test/data/render.html', {title: "Header 1", name: 'Mike'});
+      expect(s).toBe('<html>\n<h1>Header 1</h1>\n<h1>Hello Mike</h1>\n</html>');
     });  
   });
 });
