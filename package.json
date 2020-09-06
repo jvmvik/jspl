@@ -4,8 +4,8 @@
   "description": "JSP-Like (JSPL) is a simple template engine based on the library: underscore. It's compliant with Express. And the syntax is similar to JSP.",
   "main": "lib/jspl",
   "scripts": {
-   "test": "mocha",
-   "coverage": "mocha -R test && npm run coverage"
+    "test": "mocha",
+    "coverage": "mocha -R test && npm run coverage"
   },
   "keywords": [
     "express",
@@ -28,7 +28,7 @@
     "expect": "*"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/jvmvik/jspl.git"
+    "type": "git",
+    "url": "https://github.com/jvmvik/jspl.git"
   }
 }
